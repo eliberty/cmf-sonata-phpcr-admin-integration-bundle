@@ -27,7 +27,7 @@ class CmfSonataPhpcrAdminIntegrationExtension extends Extension implements Compi
     /**
      * @var AdminFactoryInterface[]
      */
-    private $factories = [];
+    private array $factories = [];
 
     /**
      * {@inheritdoc}

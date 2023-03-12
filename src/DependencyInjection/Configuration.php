@@ -24,7 +24,7 @@ class Configuration implements ConfigurationInterface
     /**
      * @var AdminFactoryInterface[]
      */
-    private $factories;
+    private array $factories;
 
     public function __construct(array $factories = [])
     {

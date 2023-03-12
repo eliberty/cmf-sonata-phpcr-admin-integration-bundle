@@ -29,19 +29,13 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  */
 class SonataEnhancer implements DescriptionEnhancerInterface
 {
-    /**
-     * @var Pool
-     */
-    private $pool;
+    private \Sonata\AdminBundle\Admin\Pool $pool;
 
-    /**
-     * @var UrlGeneratorInterface
-     */
-    private $urlGenerator;
+    private \Symfony\Component\Routing\Generator\UrlGeneratorInterface $urlGenerator;
 
-    private $adminMap = [];
+    private array $adminMap = [];
 
-    private static $linkKeyMapping = [
+    private static array $linkKeyMapping = [
         'list' => Descriptor::LINK_LIST_HTML,
         'create' => Descriptor::LINK_CREATE_HTML,
         'edit' => Descriptor::LINK_EDIT_HTML,

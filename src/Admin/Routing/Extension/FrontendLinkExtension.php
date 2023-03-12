@@ -31,15 +31,9 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class FrontendLinkExtension extends AbstractAdminExtension
 {
-    /**
-     * @var RouterInterface
-     */
-    private $router;
+    private \Symfony\Component\Routing\RouterInterface $router;
 
-    /**
-     * @var TranslatorInterface
-     */
-    private $translator;
+    private \Symfony\Component\Translation\TranslatorInterface $translator;
 
     /**
      * @param RouterInterface     $router
@@ -77,7 +71,7 @@ class FrontendLinkExtension extends AbstractAdminExtension
             throw new InvalidConfigurationException(
                 sprintf(
                     '%s can only be used on subjects which implement Symfony\Cmf\Component\Routing\RouteReferrersReadInterface or Symfony\Component\Routing\Route.',
-                    __CLASS__
+                    self::class
                 )
             );
         }

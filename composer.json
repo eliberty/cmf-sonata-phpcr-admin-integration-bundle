@@ -24,9 +24,9 @@
     "require": {
         "php": "^7.4|^8.0",
         "symfony/framework-bundle": "^3.4 || ^4.0",
-        "sonata-project/doctrine-phpcr-admin-bundle": "^2.1",
+        "sonata-project/doctrine-phpcr-admin-bundle": "^2.3",
         "sonata-project/admin-bundle": "^3.6.0",
-        "eliberty/cmf-tree-browser-bundle": "^2.0"
+        "eliberty/cmf-tree-browser-bundle": "^2.500"
     },
     "require-dev": {
         "symfony-cmf/testing": "^2.1",
@@ -48,7 +48,9 @@
         "sebastian/exporter": "^2.0.0",
         "symfony/asset": "^2.8 || ^3.3 || ^4.0",
         "symfony/browser-kit": "^2.8 || ^3.3 || ^4.0",
-        "symfony/css-selector": "^2.8 || ^3.3 || ^4.0"
+        "symfony/css-selector": "^2.8 || ^3.3 || ^4.0",
+        "rector/rector": "^0.15.21",
+        "phpcompatibility/php-compatibility": "^9.3"
     },
     "suggest": {
         "symfony-cmf/routing-bundle": "To make use of the alternate locale provider.",

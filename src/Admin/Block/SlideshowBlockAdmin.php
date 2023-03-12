@@ -111,7 +111,7 @@ class SlideshowBlockAdmin extends AbstractBlockAdmin
      */
     private function generateName()
     {
-        return 'child_'.time().'_'.rand();
+        return 'child_'.time().'_'.random_int(0, mt_getrandmax());
     }
 
     public function toString($object)
