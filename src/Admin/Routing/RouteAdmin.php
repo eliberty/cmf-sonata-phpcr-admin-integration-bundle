@@ -18,7 +18,7 @@ use Sonata\CoreBundle\Form\Type\ImmutableArrayType;
 use Symfony\Cmf\Bundle\RoutingBundle\Form\Type\RouteTypeType;
 use Symfony\Cmf\Bundle\RoutingBundle\Model\Route;
 use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\AbstractAdmin;
-use Symfony\Cmf\Bundle\TreeBrowserBundle\Form\Type\TreeSelectType;
+use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Form\Type\TreeSelectType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 

@@ -25,8 +25,7 @@
         "php": "^7.4|^8.0",
         "symfony/framework-bundle": "^3.4 || ^4.0",
         "eliberty/sonata-doctrine-phpcr-admin-bundle": "^2.5",
-        "sonata-project/admin-bundle": "^3.6.0",
-        "eliberty/cmf-tree-browser-bundle": "^2.500"
+        "sonata-project/admin-bundle": "^3.6.0"
     },
     "require-dev": {
         "symfony-cmf/testing": "^2.1",

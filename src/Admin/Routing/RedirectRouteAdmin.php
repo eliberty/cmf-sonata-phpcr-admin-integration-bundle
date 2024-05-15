@@ -16,7 +16,7 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Symfony\Cmf\Bundle\RoutingBundle\Model\Route;
 use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\AbstractAdmin;
-use Symfony\Cmf\Bundle\TreeBrowserBundle\Form\Type\TreeSelectType;
+use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Form\Type\TreeSelectType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RedirectRouteAdmin extends AbstractAdmin
