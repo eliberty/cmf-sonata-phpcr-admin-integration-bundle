@@ -18,7 +18,7 @@
                     label_translator_strategy="sonata.admin.label.strategy.underscore" />
             <argument/>
             <argument>Symfony\Cmf\Bundle\ContentBundle\Doctrine\Phpcr\StaticContent</argument>
-            <argument>SonataAdminBundle:CRUD</argument>
+            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />

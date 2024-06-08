@@ -64,7 +64,7 @@ services:
         arguments:
             - ~
             - Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Document\SeoAwareContent
-            - SonataAdminBundle:CRUD
+            - Sonata\AdminBundle\Controller\CRUDController
         calls:
             - [ setTranslationDomain, [CmfSonataPhpcrAdminIntegrationBundle]]
             - [ setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
@@ -77,7 +77,7 @@ services:
          arguments:
             - ~
             - Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Document\CoreExtensionsAwareContent
-            - SonataAdminBundle:CRUD
+            - Sonata\AdminBundle\Controller\CRUDController
          calls:
             - [ setTranslationDomain, [CmfSonataPhpcrAdminIntegrationBundle]]
             - [ setRouteBuilder, ['@sonata.admin.route.path_info_slashes']]
@@ -91,7 +91,7 @@ services:
         arguments:
             - ~
             - Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Document\MenuContent
-            - SonataAdminBundle:CRUD
+            - Sonata\AdminBundle\Controller\CRUDController
 
 sonata_admin:
     extensions:

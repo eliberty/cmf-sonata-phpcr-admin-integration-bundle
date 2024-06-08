@@ -33,7 +33,7 @@ class MenuContentAdmin extends Admin
 
         $listMapper
             ->add('locales', 'choice', [
-                'template' => 'SonataDoctrinePHPCRAdminBundle:CRUD:locales.html.twig',
+                'template' => '@SonataDoctrinePHPCRAdmin/CRUD/locales.html.twig',
             ])
         ;
     }

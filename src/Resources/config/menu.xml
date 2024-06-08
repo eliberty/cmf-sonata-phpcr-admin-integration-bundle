@@ -22,7 +22,7 @@
 
             <argument/>
             <argument>Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu</argument>
-            <argument>SonataAdminBundle:CRUD</argument>
+            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />
@@ -53,7 +53,7 @@
 
             <argument/>
             <argument>Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode</argument>
-            <argument>SonataAdminBundle:CRUD</argument>
+            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />
