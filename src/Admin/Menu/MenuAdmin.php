@@ -12,8 +12,8 @@
 namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\Menu;
 
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeManagerType;
-use Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu;
+//use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeManagerType;
+//use Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu;
 
 class MenuAdmin extends AbstractMenuNodeAdmin
 {
@@ -27,22 +27,22 @@ class MenuAdmin extends AbstractMenuNodeAdmin
         $subject = $this->getSubject();
         $isNew = null === $subject->getId();
 
-        if (!$isNew) {
-            $formMapper
-                ->tab('form.tab_general')
-                    ->with('form.group_items', ['class' => 'col-md-6'])
-                        ->add('children', TreeManagerType::class, [
-                            'root' => $subject->getId(),
-                            'edit_in_overlay' => false,
-                            'create_in_overlay' => false,
-                            'delete_in_overlay' => false,
-                        ], [
-                            'help' => 'help.help_items',
-                        ])
-                    ->end()
-                ->end()
-            ;
-        }
+        // if (!$isNew) {
+        //     $formMapper
+        //         ->tab('form.tab_general')
+        //             ->with('form.group_items', ['class' => 'col-md-6'])
+        //                 ->add('children', TreeManagerType::class, [
+        //                     'root' => $subject->getId(),
+        //                     'edit_in_overlay' => false,
+        //                     'create_in_overlay' => false,
+        //                     'delete_in_overlay' => false,
+        //                 ], [
+        //                     'help' => 'help.help_items',
+        //                 ])
+        //             ->end()
+        //         ->end()
+        //     ;
+        // }
     }
 
     public function getNewInstance()

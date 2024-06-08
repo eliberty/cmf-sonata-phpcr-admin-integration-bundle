@@ -25,12 +25,10 @@
         "php": "^7.4|^8.0",
         "symfony/framework-bundle": "^3.4 || ^4.0",
         "eliberty/sonata-doctrine-phpcr-admin-bundle": "^2.5",
-        "sonata-project/admin-bundle": "^3.6.0",
-        "eliberty/cmf-tree-browser-bundle": "^2.500"
+        "sonata-project/admin-bundle": "^3.6.0"
     },
     "require-dev": {
         "symfony-cmf/testing": "^2.1",
-        "symfony-cmf/core-bundle": "^2.1",
         "symfony-cmf/routing-bundle": "^2.1",
         "symfony-cmf/seo-bundle": "^2.1",
         "symfony-cmf/menu-bundle": "^2.2",
@@ -57,7 +55,7 @@
         "doctrine/phpcr-bundle": "To persist the metadata in PHPCR ODM documents",
         "doctrine/doctrine-bundle": "To persist the metadata in ORM entities",
         "doctrine/orm": "To persist the metadata in ORM entities, ~2.4",
-        "friendsofsymfony/ckeditor-bundl": "To have CkEditor support on textareas."
+        "friendsofsymfony/ckeditor-bundle": "To have CkEditor support on textareas."
     },
     "autoload": {
         "psr-4": {
