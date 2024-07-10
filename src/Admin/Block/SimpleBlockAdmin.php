@@ -14,6 +14,8 @@ namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\Block;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrinePHPCRAdminBundle\Filter\NodeNameFilter;
+use Sonata\DoctrinePHPCRAdminBundle\Filter\StringFilter;
 use Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -26,9 +28,9 @@ class SimpleBlockAdmin extends AbstractBlockAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('id', 'text')
             ->add('title', 'text')
         ;
@@ -37,7 +39,7 @@ class SimpleBlockAdmin extends AbstractBlockAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         parent::configureFormFields($formMapper);
 
@@ -54,15 +56,15 @@ class SimpleBlockAdmin extends AbstractBlockAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('title', 'doctrine_phpcr_string')
-            ->add('name', 'doctrine_phpcr_nodename')
+            ->add('title', StringFilter::class)
+            ->add('name', NodeNameFilter::class)
         ;
     }
 
-    public function toString($object)
+    public function toString(object $object): string
     {
         return $object instanceof SimpleBlock && $object->getTitle()
             ? $object->getTitle()

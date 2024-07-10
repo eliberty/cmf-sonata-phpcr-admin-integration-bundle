@@ -38,9 +38,9 @@ abstract class AbstractMenuNodeAdmin extends AbstractAdmin
      */
     protected $translationDomain = 'CmfSonataPhpcrAdminIntegrationBundle';
 
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('name', 'text')
             ->add('label', 'text')
         ;
@@ -49,7 +49,7 @@ abstract class AbstractMenuNodeAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             ->tab('form.tab_general')
@@ -61,9 +61,9 @@ abstract class AbstractMenuNodeAdmin extends AbstractAdmin
         ;
     }
 
-    protected function configureShowFields(ShowMapper $showMapper)
+    protected function configureShowFields(ShowMapper $show): void
     {
-        $showMapper
+        $show
             ->add('id')
             ->add('name')
             ->add('label')
@@ -72,7 +72,7 @@ abstract class AbstractMenuNodeAdmin extends AbstractAdmin
         ;
     }
 
-    public function getExportFormats()
+    public function getExportFormats(): array
     {
         return [];
     }
@@ -92,12 +92,12 @@ abstract class AbstractMenuNodeAdmin extends AbstractAdmin
         $this->contentTreeBlock = $contentTreeBlock;
     }
 
-    public function toString($object)
+    public function toString(object $object): string
     {
         if ($object instanceof MenuNodeBase && $object->getLabel()) {
             return $object->getLabel();
         }
 
-        return $this->trans('link_add', [], 'SonataAdminBundle');
+        return $this->getTranslator()->trans('link_add', [], 'SonataAdminBundle');
     }
 }

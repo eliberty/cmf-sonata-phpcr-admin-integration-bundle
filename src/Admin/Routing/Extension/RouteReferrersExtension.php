@@ -30,10 +30,10 @@ class RouteReferrersExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_routes', $formTab = 'form.tab_routes')
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
+        $this->formTab   = $formTab;
     }
 
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();
@@ -47,7 +47,7 @@ class RouteReferrersExtension extends AbstractAdminExtension
                         CollectionType::class,
                         ['label' => false],
                         [
-                            'edit' => 'inline',
+                            'edit'   => 'inline',
                             'inline' => 'table',
                         ]
                     )

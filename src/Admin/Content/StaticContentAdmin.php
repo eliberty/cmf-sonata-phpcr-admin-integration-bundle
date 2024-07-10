@@ -15,7 +15,8 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Symfony\Cmf\Bundle\ContentBundle\Model\StaticContentBase;
+use Sonata\DoctrinePHPCRAdminBundle\Filter\NodeNameFilter;
+use Sonata\DoctrinePHPCRAdminBundle\Filter\StringFilter;
 use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\AbstractAdmin;
 use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Form\Type\TreeSelectType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -30,7 +31,7 @@ class StaticContentAdmin extends AbstractAdmin
      */
     private ?array $ckEditorConfig = null;
 
-    public function getExportFormats()
+    public function getExportFormats(): array
     {
         return [];
     }
@@ -47,15 +48,15 @@ class StaticContentAdmin extends AbstractAdmin
         $this->ckEditorConfig = $config;
     }
 
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper
+        $list
             ->addIdentifier('id', 'text')
             ->addIdentifier('title', 'text')
         ;
     }
 
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $editView = (bool) $this->id($this->getSubject());
         $formMapper
@@ -75,7 +76,7 @@ class StaticContentAdmin extends AbstractAdmin
                     ->ifEnd()
                     ->ifFalse($editView)
                         ->add('parentDocument', TreeSelectType::class, [
-                            'widget' => 'browser',
+                            'widget'    => 'browser',
                             'root_node' => $this->getRootPath(),
                         ])
                     ->ifend()
@@ -88,19 +89,16 @@ class StaticContentAdmin extends AbstractAdmin
         $this->addTransformerToField($formMapper->getFormBuilder(), 'parentDocument');
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
         $datagridMapper
-            ->add('title', 'doctrine_phpcr_string')
-            ->add('name', 'doctrine_phpcr_nodename')
+            ->add('title', StringFilter::class)
+            ->add('name', NodeNameFilter::class)
         ;
     }
 
-    public function toString($object)
+    public function toString(object $object): string
     {
-        return $object instanceof StaticContentBase && $object->getTitle()
-            ? $object->getTitle()
-            : $this->trans('link_add', [], 'SonataAdminBundle')
-        ;
+        return $object->getTitle() ?: $this->getTranslator()->trans('link_add', [], 'SonataAdminBundle');
     }
 }

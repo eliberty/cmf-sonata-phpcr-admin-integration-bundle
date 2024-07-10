@@ -29,7 +29,7 @@ class BlockCacheExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_metadata', $formTab = 'form.tab_general')
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
+        $this->formTab   = $formTab;
     }
 
     /**
@@ -37,7 +37,7 @@ class BlockCacheExtension extends AbstractAdminExtension
      *
      * @param FormMapper $formMapper
      */
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();

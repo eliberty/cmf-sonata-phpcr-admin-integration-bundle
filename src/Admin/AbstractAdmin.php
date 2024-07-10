@@ -21,7 +21,7 @@ use Symfony\Component\Form\FormBuilder;
  */
 class AbstractAdmin extends Admin
 {
-    private ?\Symfony\Bridge\Doctrine\ManagerRegistry $managerRegistry = null;
+    private ?ManagerRegistry $managerRegistry = null;
 
     public function setManagerRegistry(ManagerRegistry $managerRegistry)
     {

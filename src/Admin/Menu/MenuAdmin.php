@@ -12,6 +12,7 @@
 namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\Menu;
 
 use Sonata\AdminBundle\Form\FormMapper;
+
 //use Sonata\DoctrinePHPCRAdminBundle\Form\Type\TreeManagerType;
 //use Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu;
 
@@ -20,12 +21,12 @@ class MenuAdmin extends AbstractMenuNodeAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         parent::configureFormFields($formMapper);
 
         $subject = $this->getSubject();
-        $isNew = null === $subject->getId();
+        $isNew   = null === $subject->getId();
 
         // if (!$isNew) {
         //     $formMapper
@@ -45,12 +46,11 @@ class MenuAdmin extends AbstractMenuNodeAdmin
         // }
     }
 
-    public function getNewInstance()
+    /**
+     * @phpstan-param T $object
+     */
+    protected function alterNewInstance(object $object): void
     {
-        /** @var $new Menu */
-        $new = parent::getNewInstance();
-        $new->setParentDocument($this->getModelManager()->find(null, $this->menuRoot));
-
-        return $new;
+        $object->setParentDocument($this->getModelManager()->find(null, $this->menuRoot));
     }
 }

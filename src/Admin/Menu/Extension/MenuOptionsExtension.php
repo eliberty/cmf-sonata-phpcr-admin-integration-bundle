@@ -47,14 +47,14 @@ class MenuOptionsExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_menu_options', $formTab = 'form.tab_general', $advanced = false)
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
-        $this->advanced = $advanced;
+        $this->formTab   = $formTab;
+        $this->advanced  = $advanced;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();
@@ -81,8 +81,8 @@ class MenuOptionsExtension extends AbstractAdminExtension
 
         $child_options = [
             'value_type' => TextType::class,
-            'label' => false,
-            'attr' => ['style' => 'clear:both'],
+            'label'      => false,
+            'attr'       => ['style' => 'clear:both'],
         ];
 
         $formMapper
@@ -90,8 +90,8 @@ class MenuOptionsExtension extends AbstractAdminExtension
                 'attributes',
                 KeyValueType::class,
                 [
-                  'value_type' => TextType::class,
-                  'required' => false,
+                  'value_type'    => TextType::class,
+                  'required'      => false,
                   'entry_options' => $child_options,
                 ]
             )
@@ -99,8 +99,8 @@ class MenuOptionsExtension extends AbstractAdminExtension
                 'labelAttributes',
                 KeyValueType::class,
                 [
-                  'value_type' => TextType::class,
-                  'required' => false,
+                  'value_type'    => TextType::class,
+                  'required'      => false,
                   'entry_options' => $child_options,
                 ]
             )
@@ -108,8 +108,8 @@ class MenuOptionsExtension extends AbstractAdminExtension
                 'childrenAttributes',
                 KeyValueType::class,
                 [
-                  'value_type' => TextType::class,
-                  'required' => false,
+                  'value_type'    => TextType::class,
+                  'required'      => false,
                   'entry_options' => $child_options,
                 ]
             )
@@ -117,8 +117,8 @@ class MenuOptionsExtension extends AbstractAdminExtension
                 'linkAttributes',
                 KeyValueType::class,
                 [
-                  'value_type' => TextType::class,
-                  'required' => false,
+                  'value_type'    => TextType::class,
+                  'required'      => false,
                   'entry_options' => $child_options,
                 ]
             )

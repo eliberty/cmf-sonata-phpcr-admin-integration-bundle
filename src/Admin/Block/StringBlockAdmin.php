@@ -14,6 +14,7 @@ namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\Block;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrinePHPCRAdminBundle\Filter\NodeNameFilter;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
@@ -24,15 +25,15 @@ class StringBlockAdmin extends AbstractBlockAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper->addIdentifier('id', 'text');
+        $list->addIdentifier('id', 'text');
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         parent::configureFormFields($formMapper);
 
@@ -48,8 +49,8 @@ class StringBlockAdmin extends AbstractBlockAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
-        $datagridMapper->add('name', 'doctrine_phpcr_nodename');
+        $datagridMapper->add('name', NodeNameFilter::class);
     }
 }

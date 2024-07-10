@@ -31,9 +31,9 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class FrontendLinkExtension extends AbstractAdminExtension
 {
-    private \Symfony\Component\Routing\RouterInterface $router;
+    private RouterInterface $router;
 
-    private \Symfony\Component\Translation\TranslatorInterface $translator;
+    private TranslatorInterface $translator;
 
     /**
      * @param RouterInterface     $router
@@ -41,7 +41,7 @@ class FrontendLinkExtension extends AbstractAdminExtension
      */
     public function __construct(RouterInterface $router, TranslatorInterface $translator)
     {
-        $this->router = $router;
+        $this->router     = $router;
         $this->translator = $translator;
     }
 
@@ -60,23 +60,19 @@ class FrontendLinkExtension extends AbstractAdminExtension
     public function configureTabMenu(
         AdminInterface $admin,
         MenuItemInterface $menu,
-        $action,
-        AdminInterface $childAdmin = null
-    ) {
-        if (!$subject = $admin->getSubject()) {
+        string $action,
+        ?AdminInterface $childAdmin = null
+    ): void {
+        $subject = $admin->hasSubject() ? $admin->getSubject() : null;
+        if (null === $subject) {
             return;
         }
 
         if (!$subject instanceof RouteReferrersReadInterface && !$subject instanceof Route) {
-            throw new InvalidConfigurationException(
-                sprintf(
-                    '%s can only be used on subjects which implement Symfony\Cmf\Component\Routing\RouteReferrersReadInterface or Symfony\Component\Routing\Route.',
-                    self::class
-                )
-            );
+            throw new InvalidConfigurationException(sprintf('%s can only be used on subjects which implement Symfony\Cmf\Component\Routing\RouteReferrersReadInterface or Symfony\Component\Routing\Route.', self::class));
         }
 
-        if ($subject instanceof PrefixInterface && !is_string($subject->getId())) {
+        if ($subject instanceof PrefixInterface && !\is_string($subject->getId())) {
             // we have an unpersisted dynamic route
             return;
         }
@@ -98,16 +94,16 @@ class FrontendLinkExtension extends AbstractAdminExtension
         $menu->addChild(
             $this->translator->trans('admin.menu_frontend_link_caption', [], 'CmfRoutingBundle'),
             [
-                'uri' => $uri,
+                'uri'        => $uri,
                 'attributes' => [
                     'class' => 'sonata-admin-menu-item',
-                    'role' => 'menuitem',
+                    'role'  => 'menuitem',
                 ],
                 'linkAttributes' => [
-                    'class' => 'sonata-admin-frontend-link',
-                    'role' => 'button',
+                    'class'  => 'sonata-admin-frontend-link',
+                    'role'   => 'button',
                     'target' => '_blank',
-                    'title' => $this->translator->trans('admin.menu_frontend_link_title', [], 'CmfRoutingBundle'),
+                    'title'  => $this->translator->trans('admin.menu_frontend_link_title', [], 'CmfRoutingBundle'),
                 ],
             ]
         );

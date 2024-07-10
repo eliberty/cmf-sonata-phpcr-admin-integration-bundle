@@ -36,13 +36,13 @@ class PublishTimePeriodExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_publish_workflow', $formTab = 'form.tab_publish')
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
+        $this->formTab   = $formTab;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();
@@ -50,7 +50,7 @@ class PublishTimePeriodExtension extends AbstractAdminExtension
 
         $dateOptions = [
             'placeholder' => '',
-            'required' => false,
+            'required'    => false,
         ];
 
         $formMapper

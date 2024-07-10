@@ -26,11 +26,11 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
 {
     protected $recursiveBreadcrumbs = true;
 
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $list): void
     {
-        parent::configureListFields($listMapper);
+        parent::configureListFields($list);
 
-        $listMapper
+        $list
             ->add('uri', 'text')
             ->add('route', 'text')
         ;
@@ -39,7 +39,7 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             ->tab('form.tab_general')
@@ -64,17 +64,17 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
                     ->with('form.group_target', ['class' => 'col-sm-6'])
                         ->add('linkType', ChoiceFieldMaskType::class, [
                             'choices' => [
-                                'route' => 'route',
-                                'uri' => 'uri',
+                                'route'   => 'route',
+                                'uri'     => 'uri',
                                 'content' => 'content',
                             ],
                             'map' => [
-                                'route' => ['link'],
-                                'uri' => ['link'],
+                                'route'   => ['link'],
+                                'uri'     => ['link'],
                                 'content' => ['content', TreeSelectType::class],
                             ],
                             'placeholder' => 'auto',
-                            'required' => false,
+                            'required'    => false,
                         ])
                         ->add('link', TextType::class, ['required' => false, 'mapped' => false])
                         ->add(
@@ -93,7 +93,7 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
     /**
      * {@inheritdoc}
      */
-    public function getFormBuilder()
+    public function getFormBuilder(): FormBuilderInterface
     {
         $formBuilder = parent::getFormBuilder();
 
@@ -176,8 +176,8 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
             return $menuNodeNode;
         }
 
-        $parentDoc = $this->getSubject()->getParentDocument();
-        $pool = $this->getConfigurationPool();
+        $parentDoc   = $this->getSubject()->getParentDocument();
+        $pool        = $this->getConfigurationPool();
         $parentAdmin = $pool->getAdminByClass(ClassUtils::getClass($parentDoc));
 
         if (null === $parentAdmin) {
@@ -185,7 +185,7 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
         }
 
         $parentAdmin->setSubject($parentDoc);
-        $parentAdmin->setRequest($this->request);
+        $parentAdmin->setRequest($this->getRequest());
         $parentEditNode = $parentAdmin->buildBreadcrumbs($action, $menu);
         if ($parentAdmin->isGranted('EDIT' && $parentAdmin->hasRoute('edit'))) {
             $parentEditNode->setUri(

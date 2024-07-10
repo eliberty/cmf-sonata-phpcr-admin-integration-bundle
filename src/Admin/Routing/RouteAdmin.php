@@ -14,6 +14,7 @@ namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Admin\Routing;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\DoctrinePHPCRAdminBundle\Filter\NodeNameFilter;
 use Sonata\Form\Type\ImmutableArrayType;
 use Symfony\Cmf\Bundle\RoutingBundle\Form\Type\RouteTypeType;
 use Symfony\Cmf\Bundle\RoutingBundle\Model\Route;
@@ -32,12 +33,12 @@ class RouteAdmin extends AbstractAdmin
      */
     protected $contentRoot;
 
-    protected function configureListFields(ListMapper $listMapper)
+    protected function configureListFields(ListMapper $list): void
     {
-        $listMapper->addIdentifier('path', 'text');
+        $list->addIdentifier('path', 'text');
     }
 
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             ->tab('form.tab_general')
@@ -68,7 +69,7 @@ class RouteAdmin extends AbstractAdmin
                         'variablePattern',
                         TextType::class,
                         ['required' => false],
-                        ['help' => 'form.help_variable_pattern']
+                        ['help'     => 'form.help_variable_pattern']
                     )
                     ->add(
                         'options',
@@ -97,9 +98,9 @@ class RouteAdmin extends AbstractAdmin
         }
     }
 
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper): void
     {
-        $datagridMapper->add('name', 'doctrine_phpcr_nodename');
+        $datagridMapper->add('name', NodeNameFilter::class);
     }
 
     public function setContentRoot($contentRoot)
@@ -107,7 +108,7 @@ class RouteAdmin extends AbstractAdmin
         $this->contentRoot = $contentRoot;
     }
 
-    public function getExportFormats()
+    public function getExportFormats(): array
     {
         return [];
     }
@@ -123,10 +124,10 @@ class RouteAdmin extends AbstractAdmin
     {
         $defaults = [
             '_controller' => ['_controller', TextType::class, ['required' => false, 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle']],
-            '_template' => ['_template', TextType::class, ['required' => false, 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle']],
-            'type' => ['type', RouteTypeType::class, [
-                'placeholder' => '',
-                'required' => false,
+            '_template'   => ['_template', TextType::class, ['required' => false, 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle']],
+            'type'        => ['type', RouteTypeType::class, [
+                'placeholder'        => '',
+                'required'           => false,
                 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle',
             ]],
         ];
@@ -141,7 +142,7 @@ class RouteAdmin extends AbstractAdmin
         /** @var $route Route */
         $route = $this->subject;
         if ($route && $route->getVariablePattern()) {
-            preg_match_all('#\{\w+\}#', $route->getVariablePattern(), $matches, PREG_OFFSET_CAPTURE | PREG_SET_ORDER);
+            preg_match_all('#\{\w+\}#', $route->getVariablePattern(), $matches, \PREG_OFFSET_CAPTURE | \PREG_SET_ORDER);
             foreach ($matches as $match) {
                 $name = substr($match[0][0], 1, -1);
                 if (!isset($defaults[$name])) {
@@ -184,23 +185,23 @@ class RouteAdmin extends AbstractAdmin
         return $options;
     }
 
-    public function prePersist($object)
+    protected function prePersist(object $object): void
     {
         $defaults = array_filter($object->getDefaults());
         $object->setDefaults($defaults);
     }
 
-    public function preUpdate($object)
+    protected function preUpdate(object $object): void
     {
         $defaults = array_filter($object->getDefaults());
         $object->setDefaults($defaults);
     }
 
-    public function toString($object)
+    public function toString(object $object): string
     {
         return $object instanceof Route && $object->getId()
             ? $object->getId()
-            : $this->trans('link_add', [], 'SonataAdminBundle')
+            : $this->getTranslator()->trans('link_add', [], 'SonataAdminBundle')
         ;
     }
 }

@@ -24,8 +24,8 @@
     "require": {
         "php": "^7.4|^8.0",
         "symfony/framework-bundle": "^3.4 || ^4.0",
-        "eliberty/sonata-doctrine-phpcr-admin-bundle": "^2.5",
-        "sonata-project/admin-bundle": "^3.6.0 || ^4"
+        "eliberty/sonata-doctrine-phpcr-admin-bundle": "^2.504",
+        "sonata-project/admin-bundle": "^4"
     },
     "require-dev": {
         "symfony-cmf/testing": "^2.1",

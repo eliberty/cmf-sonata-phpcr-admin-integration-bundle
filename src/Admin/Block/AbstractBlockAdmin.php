@@ -29,7 +29,7 @@ abstract class AbstractBlockAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    public function getExportFormats()
+    public function getExportFormats(): array
     {
         return [];
     }
@@ -37,7 +37,7 @@ abstract class AbstractBlockAdmin extends AbstractAdmin
     /**
      * {@inheritdoc}
      */
-    protected function configureFormFields(FormMapper $formMapper)
+    protected function configureFormFields(FormMapper $formMapper): void
     {
         $formMapper
             ->tab('form.tab_general')

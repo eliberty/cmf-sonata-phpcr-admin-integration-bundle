@@ -37,13 +37,13 @@ class PublishableExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_publish_workflow', $formTab = 'form.tab_publish')
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
+        $this->formTab   = $formTab;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();
@@ -60,7 +60,7 @@ class PublishableExtension extends AbstractAdminExtension
                 )
                     ->add('publishable', CheckboxType::class, ['required' => false, 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle'], [
                         'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle',
-                        'help' => 'form.help_publishable',
+                        'help'               => 'form.help_publishable',
                     ])
                 ->end()
             ->end();

@@ -40,10 +40,10 @@ class SeoContentAdminExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_seo', $formTab = 'form.tab_seo')
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
+        $this->formTab   = $formTab;
     }
 
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();
@@ -59,8 +59,8 @@ class SeoContentAdminExtension extends AbstractAdminExtension
                     : []
                 )
                     ->add('seoMetadata', SeoMetadataType::class, [
-                        'label' => false,
-                        'label_format' => 'form.label_%name%',
+                        'label'              => false,
+                        'label_format'       => 'form.label_%name%',
                         'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle',
                     ])
                 ->end()

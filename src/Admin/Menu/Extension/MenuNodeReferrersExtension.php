@@ -29,10 +29,10 @@ class MenuNodeReferrersExtension extends AbstractAdminExtension
     public function __construct($formGroup = 'form.group_menus', $formTab = 'form.tab_menu')
     {
         $this->formGroup = $formGroup;
-        $this->formTab = $formTab;
+        $this->formTab   = $formTab;
     }
 
-    public function configureFormFields(FormMapper $formMapper)
+    public function configureFormFields(FormMapper $formMapper): void
     {
         if ($formMapper->hasOpenTab()) {
             $formMapper->end();
