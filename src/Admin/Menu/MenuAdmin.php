@@ -33,12 +33,13 @@ class MenuAdmin extends AbstractMenuNodeAdmin
         //         ->tab('form.tab_general')
         //             ->with('form.group_items', ['class' => 'col-md-6'])
         //                 ->add('children', TreeManagerType::class, [
-        //                     'root' => $subject->getId(),
-        //                     'edit_in_overlay' => false,
+        //                     'root'              => $subject->getId(),
+        //                     'edit_in_overlay'   => false,
         //                     'create_in_overlay' => false,
         //                     'delete_in_overlay' => false,
         //                 ], [
-        //                     'help' => 'help.help_items',
+        //                     'help'      => 'help.help_items',
+        //                     'help_html' => true,
         //                 ])
         //             ->end()
         //         ->end()

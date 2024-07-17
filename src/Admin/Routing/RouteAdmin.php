@@ -69,13 +69,19 @@ class RouteAdmin extends AbstractAdmin
                         'variablePattern',
                         TextType::class,
                         ['required' => false],
-                        ['help'     => 'form.help_variable_pattern']
+                        [
+                            'help'      => 'form.help_variable_pattern',
+                            'help_html' => true,
+                        ]
                     )
                     ->add(
                         'options',
                         ImmutableArrayType::class,
                         ['keys' => $this->configureFieldsForOptions($this->getSubject()->getOptions())],
-                        ['help' => 'form.help_options']
+                        [
+                            'help'      => 'form.help_options',
+                            'help_html' => true,
+                        ]
                     )
                 ->end() // group path
 

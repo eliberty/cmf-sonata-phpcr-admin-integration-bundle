@@ -61,6 +61,7 @@ class PublishableExtension extends AbstractAdminExtension
                     ->add('publishable', CheckboxType::class, ['required' => false, 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle'], [
                         'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle',
                         'help'               => 'form.help_publishable',
+                        'help_html'          => true,
                     ])
                 ->end()
             ->end();

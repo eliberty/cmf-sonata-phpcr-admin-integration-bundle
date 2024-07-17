@@ -63,10 +63,12 @@ class PublishTimePeriodExtension extends AbstractAdminExtension
                     : []
                 )
                     ->add('publish_start_date', DateType::class, $dateOptions, [
-                        'help' => 'form.help_publish_start_date',
+                        'help'      => 'form.help_publish_start_date',
+                        'help_html' => true,
                     ])
                     ->add('publish_end_date', DateType::class, $dateOptions, [
-                        'help' => 'form.help_publish_end_date',
+                        'help'      => 'form.help_publish_end_date',
+                        'help_html' => true,
                     ])
                 ->end()
             ->end();

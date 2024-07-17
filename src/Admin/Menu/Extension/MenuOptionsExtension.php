@@ -69,8 +69,14 @@ class MenuOptionsExtension extends AbstractAdminExtension
                     ? ['class' => 'col-md-3', 'translation_domain' => 'CmfSonataPhpcrAdminIntegrationBundle']
                     : ['class' => 'col-md-3']
                 )
-                    ->add('display', CheckboxType::class, ['required' => false], ['help' => 'form.help_display'])
-                    ->add('displayChildren', CheckboxType::class, ['required' => false], ['help' => 'form.help_display_children'])
+                    ->add('display', CheckboxType::class, ['required' => false], [
+                        'help'      => 'form.help_display',
+                        'help_html' => true,
+                    ])
+                    ->add('displayChildren', CheckboxType::class, ['required' => false], [
+                        'help'      => 'form.help_display_children',
+                        'help_html' => true,
+                    ])
         ;
 
         if (!$this->advanced) {
