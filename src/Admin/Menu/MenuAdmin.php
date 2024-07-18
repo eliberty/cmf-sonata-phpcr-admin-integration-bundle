@@ -52,6 +52,6 @@ class MenuAdmin extends AbstractMenuNodeAdmin
      */
     protected function alterNewInstance(object $object): void
     {
-        $object->setParentDocument($this->getModelManager()->find(null, $this->menuRoot));
+        $object->setParentDocument($this->getModelManager()->find('', $this->menuRoot));
     }
 }
