@@ -11,15 +11,15 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
+                    code="~"
+                    model_class="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route"
+                    controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
                     manager_type="doctrine_phpcr"
                     group="dashboard.cmf"
-                    label_catalogue="CmfSonataPhpcrAdminIntegrationBundle"
+                    translation_domain="CmfSonataPhpcrAdminIntegrationBundle"
                     label="dashboard.label_routing"
                     label_translator_strategy="sonata.admin.label.strategy.underscore" />
-            <argument/>
-            <argument>Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route</argument>
-            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />
@@ -40,15 +40,15 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
+                    code="~"
+                    model_class="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute"
+                    controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
                     manager_type="doctrine_phpcr"
                     group="dashboard.cmf"
-                    label_catalogue="CmfSonataPhpcrAdminIntegrationBundle"
+                    translation_domain="CmfSonataPhpcrAdminIntegrationBundle"
                     label="dashboard.label_redirect_routing"
                     label_translator_strategy="sonata.admin.label.strategy.underscore" />
-            <argument/>
-            <argument>Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute</argument>
-            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />

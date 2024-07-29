@@ -11,15 +11,15 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
+                    code="~"
+                    model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\MenuBlock"
+                    controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
                     manager_type="doctrine_phpcr"
                     group="dashboard.cmf"
-                    label_catalogue="CmfBlockBundle"
+                    translation_domain="CmfBlockBundle"
                     label="dashboard.label_menu_block"
                     label_translator_strategy="sonata.admin.label.strategy.underscore" />
-            <argument/>
-            <argument>Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\MenuBlock</argument>
-            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />

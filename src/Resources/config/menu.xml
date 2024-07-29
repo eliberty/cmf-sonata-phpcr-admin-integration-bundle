@@ -12,17 +12,16 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
+                code="~"
+                model_class="Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu"
+                controller="Sonata\AdminBundle\Controller\CRUDController"
                 name="sonata.admin"
                 manager_type="doctrine_phpcr"
                 group="dashboard.cmf"
-                label_catalogue="CmfMenuBundle"
+                translation_domain="CmfMenuBundle"
                 label="dashboard.label_menu"
                 label_translator_strategy="sonata.admin.label.strategy.underscore"
             />
-
-            <argument/>
-            <argument>Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\Menu</argument>
-            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />
@@ -43,17 +42,16 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
+                code="~"
+                model_class="Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode"
+                controller="Sonata\AdminBundle\Controller\CRUDController"
                 name="sonata.admin"
                 manager_type="doctrine_phpcr"
                 group="dashboard.cmf"
-                label_catalogue="CmfSonataPhpcrAdminIntegrationBundle"
+                translation_domain="CmfSonataPhpcrAdminIntegrationBundle"
                 label="dashboard.label_menu_node"
                 label_translator_strategy="sonata.admin.label.strategy.underscore"
             />
-
-            <argument/>
-            <argument>Symfony\Cmf\Bundle\MenuBundle\Doctrine\Phpcr\MenuNode</argument>
-            <argument>Sonata\AdminBundle\Controller\CRUDController</argument>
 
             <call method="setRouteBuilder">
                 <argument type="service" id="sonata.admin.route.path_info_slashes" />
