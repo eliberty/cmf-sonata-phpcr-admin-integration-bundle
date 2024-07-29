@@ -60,7 +60,7 @@ services:
         public: true
         class: Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Admin\SeoAwareContentAdmin
         tags:
-            - { name: sonata.admin, manager_type: doctrine_phpcr, label_catalogue: CmfSeoBundle, group: dashboard.cmf, label: dashboard.label_seo_content, label_translator_strategy: sonata.admin.label.strategy.underscore}
+            - { name: sonata.admin, manager_type: doctrine_phpcr, translation_domain: CmfSeoBundle, group: dashboard.cmf, label: dashboard.label_seo_content, label_translator_strategy: sonata.admin.label.strategy.underscore}
         arguments:
             - ~
             - Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Document\SeoAwareContent
@@ -73,7 +73,7 @@ services:
          public: true
          class: Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Admin\CoreExtensionsAdmin
          tags:
-           - { name: sonata.admin, manager_type: doctrine_phpcr, label_catalogue: CmfSeoBundle, group: dashboard.cmf, label: dashboard.label_seo_content, label_translator_strategy: sonata.admin.label.strategy.underscore}
+           - { name: sonata.admin, manager_type: doctrine_phpcr, translation_domain: CmfSeoBundle, group: dashboard.cmf, label: dashboard.label_seo_content, label_translator_strategy: sonata.admin.label.strategy.underscore}
          arguments:
             - ~
             - Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Tests\Fixtures\App\Document\CoreExtensionsAwareContent
