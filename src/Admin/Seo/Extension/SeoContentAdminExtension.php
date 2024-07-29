@@ -68,14 +68,14 @@ class SeoContentAdminExtension extends AbstractAdminExtension
         ;
     }
 
-    public function preUpdate(AdminInterface $admin, $seoAware)
+    public function preUpdate(AdminInterface $admin, object $object): void
     {
-        $this->propagateLocale($seoAware);
+        $this->propagateLocale($object);
     }
 
-    public function prePersist(AdminInterface $admin, $seoAware)
+    public function prePersist(AdminInterface $admin, object $object): void
     {
-        $this->propagateLocale($seoAware);
+        $this->propagateLocale($object);
     }
 
     /**

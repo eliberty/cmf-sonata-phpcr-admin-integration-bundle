@@ -15,10 +15,11 @@ use Doctrine\Common\Util\ClassUtils;
 use Knp\Menu\ItemInterface as MenuItemInterface;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
-use Sonata\DoctrinePHPCRAdminBundle\Form\Type\ChoiceFieldMaskType;
+use Sonata\AdminBundle\Form\Type\ChoiceFieldMaskType;
 use Symfony\Cmf\Bundle\MenuBundle\Model\MenuNode;
 use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\Form\Type\TreeSelectType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
@@ -53,7 +54,10 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
             ->end()
         ;
 
-        $this->addTransformerToField($formMapper->getFormBuilder(), 'parentDocument');
+        $formBuilder = $formMapper->getFormBuilder();
+        $this->addEventListenersForLink($formBuilder);
+
+        $this->addTransformerToField($formBuilder, 'parentDocument');
 
         parent::configureFormFields($formMapper);
 
@@ -86,17 +90,16 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
                 ->end()
             ;
 
-            $this->addTransformerToField($formMapper->getFormBuilder(), 'content');
+            $this->addTransformerToField($formBuilder, 'content');
         }
     }
 
     /**
-     * {@inheritdoc}
+     * Replace sonata final function getFormBuilder extends to be sonate 4 compatible... 
+     * Could be done in a better way, with extensions ?
      */
-    public function getFormBuilder(): FormBuilderInterface
+    public function addEventListenersForLink(FormBuilderInterface $formBuilder): void
     {
-        $formBuilder = parent::getFormBuilder();
-
         $formBuilder->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
             if (!$event->getForm()->has('link')) {
                 return;
@@ -161,8 +164,6 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
                     break;
             }
         });
-
-        return $formBuilder;
     }
 
     /**
