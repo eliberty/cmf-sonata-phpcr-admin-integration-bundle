@@ -98,7 +98,7 @@ class MenuNodeAdmin extends AbstractMenuNodeAdmin
      * Replace sonata final function getFormBuilder extends to be sonate 4 compatible... 
      * Could be done in a better way, with extensions ?
      */
-    public function addEventListenersForLink(FormBuilderInterface $formBuilder): void
+    private function addEventListenersForLink(FormBuilderInterface $formBuilder): void
     {
         $formBuilder->addEventListener(FormEvents::POST_SET_DATA, function (FormEvent $event) {
             if (!$event->getForm()->has('link')) {

@@ -36,10 +36,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $root = $treeBuilder->root('cmf_sonata_phpcr_admin_integration');
+        $treeBuilder = new TreeBuilder('cmf_sonata_phpcr_admin_integration');
+        $rootNode    = $treeBuilder->getRootNode();
 
-        $this->addBundlesSection($root);
+        $this->addBundlesSection($rootNode);
 
         return $treeBuilder;
     }

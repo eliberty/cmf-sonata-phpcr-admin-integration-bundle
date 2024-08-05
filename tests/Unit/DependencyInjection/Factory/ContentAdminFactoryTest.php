@@ -80,10 +80,10 @@ class ContentAdminFactoryTest extends \PHPUnit_Framework_TestCase
 
     protected function buildConfig()
     {
-        $treeBuilder = new TreeBuilder();
-        $root = $treeBuilder->root('cmf_sonata_phpcr_admin_integration');
+        $treeBuilder = new TreeBuilder('cmf_sonata_phpcr_admin_integration');
+        $rootNode    = $treeBuilder->getRootNode();
 
-        $bundles = $root->children()->arrayNode('bundles')->isRequired()->children();
+        $bundles = $rootNode->children()->arrayNode('bundles')->isRequired()->children();
         $config = $bundles->arrayNode($this->factory->getKey())
             ->addDefaultsIfNotSet()
             ->canBeEnabled()
