@@ -23,7 +23,7 @@ class CoreExtensionsAwareContent extends ContentBase implements PublishableInter
     /**
      * {@inheritdoc}
      */
-    public function setPublishStartDate(\DateTime $publishDate = null)
+    public function setPublishStartDate(?\DateTime $publishDate = null)
     {
         // TODO: Implement setPublishStartDate() method.
     }
@@ -31,7 +31,7 @@ class CoreExtensionsAwareContent extends ContentBase implements PublishableInter
     /**
      * {@inheritdoc}
      */
-    public function setPublishEndDate(\DateTime $publishDate = null)
+    public function setPublishEndDate(?\DateTime $publishDate = null)
     {
         // TODO: Implement setPublishEndDate() method.
     }

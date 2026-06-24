@@ -49,7 +49,7 @@ class FrontendLinkExtension extends AbstractAdminExtension
         AdminInterface $admin,
         MenuItemInterface $menu,
         $action,
-        AdminInterface $childAdmin = null
+        ?AdminInterface $childAdmin = null
     ) {
         $this->configureTabMenu($admin, $menu, $action, $childAdmin);
     }
