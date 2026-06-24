@@ -12,6 +12,7 @@
 namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\DependencyInjection;
 
 use Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\DependencyInjection\Factory\AdminFactoryInterface;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -68,7 +69,7 @@ class CmfSonataPhpcrAdminIntegrationExtension extends Extension implements Compi
      *
      * Overwritten because configuration can not be auto instantiated as it has a constructor.
      */
-    public function getConfiguration(array $config, ContainerBuilder $container)
+    public function getConfiguration(array $config, ContainerBuilder $container): ?ConfigurationInterface
     {
         $this->addDefaultFactories($container);
 
@@ -100,7 +101,7 @@ class CmfSonataPhpcrAdminIntegrationExtension extends Extension implements Compi
     /**
      * {@inheritdoc}
      */
-    public function getNamespace()
+    public function getNamespace(): string
     {
         return 'http://cmf.symfony.com/schema/dic/sonata-phpcr-admin-integration';
     }
@@ -108,7 +109,7 @@ class CmfSonataPhpcrAdminIntegrationExtension extends Extension implements Compi
     /**
      * {@inheritdoc}
      */
-    public function getXsdValidationBasePath()
+    public function getXsdValidationBasePath(): string|false
     {
         return __DIR__.'/../Resources/config/schema';
     }

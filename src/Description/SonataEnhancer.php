@@ -70,7 +70,7 @@ class SonataEnhancer implements DescriptionEnhancerInterface
             $routeName = $route->getDefault('_sonata_name');
             $url = $this->urlGenerator->generate($routeName, [
                 $admin->getIdParameter() => $admin->getUrlsafeIdentifier($object),
-            ], true);
+            ], UrlGeneratorInterface::ABSOLUTE_URL);
 
             $linkKey = trim($code, '.)');
             if (array_key_exists($linkKey, self::$linkKeyMapping)) {

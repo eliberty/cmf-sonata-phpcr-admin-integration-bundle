@@ -42,7 +42,7 @@ class TreeSelectType extends AbstractType
         $view->vars['repository_name'] = $options['repository_name'];
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefault('widget', 'compact');
         $resolver->setAllowedValues('widget', ['browser', 'compact']);
@@ -53,12 +53,12 @@ class TreeSelectType extends AbstractType
         $resolver->setDefault('repository_name', 'default');
     }
 
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'cmf_tree_select';
     }
 
-    public function getParent()
+    public function getParent(): ?string
     {
         return TextType::class;
     }
