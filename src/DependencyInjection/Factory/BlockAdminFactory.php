@@ -13,13 +13,14 @@ namespace Symfony\Cmf\Bundle\SonataPhpcrAdminIntegrationBundle\DependencyInjecti
 
 use Symfony\Cmf\Bundle\MenuBundle\CmfMenuBundle;
 use Symfony\Component\Config\Definition\Builder\NodeBuilder;
+use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
 /**
  * @author Maximilian Berghoff <Maximilian.Berghoff@mayflower.de>
  */
-class BlockAdminFactory implements AdminFactoryInterface
+class BlockAdminFactory implements AdminFactoryInterface, CompilerPassInterface
 {
     use IsConfigEnabledTrait;
 
@@ -102,7 +103,7 @@ class BlockAdminFactory implements AdminFactoryInterface
             if (null === $menuBasepath) {
                 $container->setParameter(
                     'cmf_sonata_phpcr_admin_integration.block.menu_basepath',
-                    $container->getParameter('cmf_menu.persistence.menu_basepath')
+                    $container->getParameter('cmf_menu.persistence.phpcr.menu_basepath')
                 );
             }
         }

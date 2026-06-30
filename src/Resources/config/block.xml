@@ -21,7 +21,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SimpleBlock"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
@@ -46,7 +45,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ActionBlock"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
@@ -71,7 +69,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ContainerBlock"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
@@ -96,7 +93,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\ReferenceBlock"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
@@ -121,7 +117,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\StringBlock"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
@@ -146,7 +141,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\BlockBundle\Doctrine\Phpcr\SlideshowBlock"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"

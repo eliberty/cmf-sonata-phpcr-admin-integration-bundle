@@ -11,7 +11,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\Route"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
@@ -40,7 +39,6 @@
                 parent="cmf_sonata_phpcr_admin_integration.abstract_admin"
                 public="true">
             <tag
-                    code="~"
                     model_class="Symfony\Cmf\Bundle\RoutingBundle\Doctrine\Phpcr\RedirectRoute"
                     controller="Sonata\AdminBundle\Controller\CRUDController"
                     name="sonata.admin"
