@@ -15,6 +15,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
@@ -48,7 +49,11 @@ class TreeSelectType extends AbstractType
         $resolver->setAllowedValues('widget', ['browser', 'compact']);
 
         $resolver->setDefault('root_node', '/');
-        $resolver->setAllowedValues('root_node', fn($value) => '/' === $value[0]);
+        // Tolerate a null root_node (e.g. when an admin basepath is not yet
+        // resolved) instead of crashing on $value[0]; a string must still be an
+        // absolute PHPCR path.
+        $resolver->setAllowedValues('root_node', static fn($value): bool => null === $value || (\is_string($value) && str_starts_with($value, '/')));
+        $resolver->setNormalizer('root_node', static fn(Options $options, ?string $value): string => $value ?? '/');
 
         $resolver->setDefault('repository_name', 'default');
     }
